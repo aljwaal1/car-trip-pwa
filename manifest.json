@@ -1,0 +1,17 @@
+{
+  "name": "عداد رحلة السيارة",
+  "short_name": "عداد السيارة",
+  "description": "PWA لتتبع رحلات السيارة عبر GPS مع أعلى سرعة ومتوسط السرعة والمسافة وسجل الرحلات.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b1220",
+  "background_color": "#f5f7fb",
+  "icons": [
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
