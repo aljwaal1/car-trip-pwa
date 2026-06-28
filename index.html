@@ -14,31 +14,32 @@
     :root{
       --bg:#f5f7fb;--surface:#ffffff;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;
       --dark:#0b1220;--primary:#2563eb;--primary2:#06b6d4;--good:#16a34a;--warn:#f59e0b;--danger:#ef4444;
-      --shadow:0 22px 55px rgba(15,23,42,.14);--soft:0 12px 28px rgba(15,23,42,.08);
+      --shadow:0 18px 45px rgba(15,23,42,.13);--soft:0 10px 24px rgba(15,23,42,.08);
+      --navH:62px;
     }
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{min-height:100%;margin:0}
+    html,body{height:100%;margin:0;overflow:hidden}
     body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:radial-gradient(circle at 12% -8%,#dbeafe 0,#f8fafc 36%,#eef2ff 100%);color:var(--ink)}
-    .app{max-width:980px;margin:auto;padding:16px 14px 96px}
-    .hero{position:relative;overflow:hidden;border-radius:34px;padding:20px;background:linear-gradient(145deg,#0b1220,#172554 52%,#0891b2);color:#fff;box-shadow:var(--shadow)}
+    .app{height:calc(100dvh - var(--navH));max-width:980px;margin:auto;padding:10px 10px 8px;overflow:hidden}
+    .page{height:100%;display:none;overflow:hidden}.page.active{display:block}
+    .grid{height:100%;display:grid;grid-template-columns:.92fr 1.08fr;gap:10px;align-items:stretch}
+    .hero{position:relative;overflow:hidden;border-radius:28px;padding:14px;background:linear-gradient(145deg,#0b1220,#172554 52%,#0891b2);color:#fff;box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr auto;min-height:0}
     .hero:before{content:"";position:absolute;inset:-85px auto auto -75px;width:220px;height:220px;border-radius:50%;background:rgba(96,165,250,.36);filter:blur(2px)}
     .hero:after{content:"";position:absolute;right:-70px;bottom:-85px;width:210px;height:210px;border-radius:50%;background:rgba(34,211,238,.25)}
-    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
-    .brand{display:flex;align-items:center;gap:12px}.logo{width:52px;height:52px;border-radius:19px;background:#fff;color:#1d4ed8;display:grid;place-items:center;font-size:30px;box-shadow:0 14px 32px rgba(0,0,0,.22)}
-    h1{font-size:24px;margin:0}.caption{font-size:13px;opacity:.82;margin-top:4px}.pill{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.13);border-radius:999px;padding:9px 12px;font-size:12px;font-weight:900;white-space:nowrap}
-    .speedWrap{display:grid;place-items:center;padding:24px 0 14px;position:relative;z-index:1}.speedRing{width:236px;height:236px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#22d3ee var(--p,0%),rgba(255,255,255,.14) 0);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 24px 50px rgba(0,0,0,.18)}
-    .speedInner{width:184px;height:184px;border-radius:50%;background:rgba(15,23,42,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(255,255,255,.08)}
-    .speed{font-size:58px;font-weight:950;letter-spacing:-2px;line-height:1}.speedUnit{font-size:13px;color:#bae6fd;margin-top:4px}.speedNote{font-size:12px;color:#e0f2fe;margin-top:8px}
-    .quickStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;position:relative;z-index:1}.mini{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:12px;text-align:center}.mini b{display:block;font-size:20px}.mini span{font-size:11px;opacity:.78}
-    .grid{display:grid;gap:14px}.panel{background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.95);box-shadow:var(--soft);border-radius:28px;padding:16px;margin-top:14px;backdrop-filter:blur(12px)}
-    .sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.sectionTitle h2{font-size:18px;margin:0}.small{font-size:12px;color:var(--muted);line-height:1.8}.timer{text-align:center;font-size:42px;font-weight:950;letter-spacing:1px;margin:4px 0 10px;color:#0b1220}
-    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{border:1px solid var(--line);border-radius:24px;padding:14px;background:#fff}.stat .label{color:var(--muted);font-size:12px;font-weight:900}.stat .value{font-size:27px;font-weight:950;margin-top:5px;color:#1d4ed8}.stat .unit{font-size:11px;color:var(--muted);line-height:1.6}.stat.warn .value{color:#d97706}.stat.good .value{color:#16a34a}.stat.danger .value{color:#dc2626}
-    .notice{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:20px;padding:12px;font-size:13px;line-height:1.8}.notice.safe{background:#f8fafc;border-color:#e2e8f0;color:#334155}.notice.ok{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.notice.warn{background:#fffbeb;border-color:#fde68a;color:#92400e}.notice.bad{background:#fef2f2;border-color:#fecaca;color:#991b1b}
-    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}button,input,textarea{font:inherit;border-radius:18px;outline:none}button{border:0;padding:15px 12px;font-weight:950;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 13px 25px rgba(37,99,235,.22);cursor:pointer}button.dark{background:#0f172a}button.light{background:#fff;color:#0f172a;border:1px solid var(--line);box-shadow:none}button.gold{background:linear-gradient(135deg,#f59e0b,#f97316)}button.danger{background:var(--danger)}button:disabled{opacity:.45;cursor:not-allowed}
-    .field{display:flex;flex-direction:column;gap:7px;margin-bottom:11px}.field label{font-size:12px;color:var(--muted);font-weight:900}input,textarea{border:1px solid var(--line);background:#fff;padding:14px;color:var(--ink)}textarea{min-height:74px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .historyItem{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;margin:10px 0}.historyTop{display:flex;justify-content:space-between;gap:10px}.badge{background:#dbeafe;color:#1d4ed8;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:950}.badge.fast{background:#fee2e2;color:#991b1b}.badge.manual{background:#fef3c7;color:#92400e}.empty{text-align:center;padding:24px;color:var(--muted);font-size:13px}.hint{font-size:12px;color:var(--muted);line-height:1.9;margin-top:8px}
-    .tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;gap:8px;padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:30}.tab{flex:1;background:transparent;color:#64748b;box-shadow:none;border-radius:18px;padding:10px 4px;font-size:12px}.tab.active{background:#0f172a;color:#fff}.page{display:none}.page.active{display:block}.toast{position:fixed;top:12px;left:12px;right:12px;background:#0f172a;color:#fff;border-radius:22px;padding:14px;box-shadow:0 20px 45px rgba(0,0,0,.25);display:none;z-index:60;line-height:1.7}.toast.show{display:block}.sep{height:1px;background:var(--line);margin:12px 0}
-    @media(min-width:800px){.grid{grid-template-columns:.94fr 1.06fr}.cards{grid-template-columns:repeat(4,1fr)}.timer{font-size:56px}.speedRing{width:258px;height:258px}.speedInner{width:200px;height:200px}.speed{font-size:66px}.hero{margin-top:14px}}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1}.brand{display:flex;align-items:center;gap:9px;min-width:0}.logo{width:44px;height:44px;border-radius:16px;background:#fff;color:#1d4ed8;display:grid;place-items:center;font-size:25px;box-shadow:0 12px 26px rgba(0,0,0,.2)}
+    h1{font-size:20px;margin:0;white-space:nowrap}.caption{font-size:11px;opacity:.82;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pill{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.13);border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900;white-space:nowrap}
+    .speedWrap{display:grid;place-items:center;padding:8px 0;position:relative;z-index:1;min-height:0}.speedRing{width:min(48dvh,228px);height:min(48dvh,228px);border-radius:50%;display:grid;place-items:center;background:conic-gradient(#22d3ee var(--p,0%),rgba(255,255,255,.14) 0);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 18px 40px rgba(0,0,0,.18)}
+    .speedInner{width:78%;height:78%;border-radius:50%;background:rgba(15,23,42,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(255,255,255,.08)}
+    .speed{font-size:clamp(42px,8dvh,60px);font-weight:950;letter-spacing:-2px;line-height:1}.speedUnit{font-size:12px;color:#bae6fd;margin-top:2px}.speedNote{font-size:11px;color:#e0f2fe;margin-top:5px;min-height:14px}
+    .quickStats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;z-index:1}.mini{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:9px;text-align:center}.mini b{display:block;font-size:18px}.mini span{font-size:10px;opacity:.78}
+    .side{height:100%;display:grid;grid-template-rows:1.42fr .86fr;gap:10px;min-height:0}.panel{background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.95);box-shadow:var(--soft);border-radius:24px;padding:12px;backdrop-filter:blur(12px);min-height:0;overflow:hidden}.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.sectionTitle h2{font-size:16px;margin:0}.small{font-size:11px;color:var(--muted);line-height:1.5}.timer{text-align:center;font-size:34px;font-weight:950;letter-spacing:1px;margin:0 0 8px;color:#0b1220}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{border:1px solid var(--line);border-radius:18px;padding:9px;background:#fff;text-align:center;min-width:0}.stat .label{color:var(--muted);font-size:10px;font-weight:900;white-space:nowrap}.stat .value{font-size:22px;font-weight:950;margin-top:3px;color:#1d4ed8;line-height:1.05}.stat .unit{font-size:10px;color:var(--muted);line-height:1.35}.stat.warn .value{color:#d97706}.stat.good .value{color:#16a34a}.stat.danger .value{color:#dc2626}
+    .notice{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:16px;padding:8px 10px;font-size:11px;line-height:1.45}.notice.safe{background:#f8fafc;border-color:#e2e8f0;color:#334155}.notice.ok{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.notice.warn{background:#fffbeb;border-color:#fde68a;color:#92400e}.notice.bad{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+    .compactNotices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}button,input,textarea{font:inherit;border-radius:16px;outline:none}button{border:0;padding:12px 8px;font-weight:950;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 10px 22px rgba(37,99,235,.18);cursor:pointer;font-size:12px}button.dark{background:#0f172a}button.light{background:#fff;color:#0f172a;border:1px solid var(--line);box-shadow:none}button.gold{background:linear-gradient(135deg,#f59e0b,#f97316)}button.danger{background:var(--danger)}button:disabled{opacity:.45;cursor:not-allowed}
+    .field{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}.field label{font-size:11px;color:var(--muted);font-weight:900}input,textarea{border:1px solid var(--line);background:#fff;padding:11px;color:var(--ink);width:100%}textarea{min-height:58px;resize:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pageGrid{height:100%;display:grid;grid-template-rows:auto 1fr;gap:10px;min-height:0}.historyList{min-height:0;overflow:auto;padding-inline-end:2px}.historyItem{background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:0 0 8px}.historyTop{display:flex;justify-content:space-between;gap:8px}.badge{background:#dbeafe;color:#1d4ed8;padding:4px 9px;border-radius:999px;font-size:10px;font-weight:950}.badge.fast{background:#fee2e2;color:#991b1b}.badge.manual{background:#fef3c7;color:#92400e}.empty{text-align:center;padding:20px;color:var(--muted);font-size:12px}.hint{font-size:11px;color:var(--muted);line-height:1.7;margin-top:6px}.sep{height:1px;background:var(--line);margin:8px 0}
+    .tabs{position:fixed;left:0;right:0;bottom:0;height:var(--navH);background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;gap:7px;padding:8px 9px calc(8px + env(safe-area-inset-bottom));z-index:30}.tab{flex:1;background:transparent;color:#64748b;box-shadow:none;border-radius:16px;padding:8px 4px;font-size:11px}.tab.active{background:#0f172a;color:#fff}.toast{position:fixed;top:10px;left:10px;right:10px;background:#0f172a;color:#fff;border-radius:18px;padding:12px;box-shadow:0 20px 45px rgba(0,0,0,.25);display:none;z-index:60;line-height:1.6}.toast.show{display:block}
+    @media(max-width:760px){.grid{grid-template-columns:1fr;grid-template-rows:.95fr 1.05fr}.side{grid-template-rows:1fr .56fr}.cards{grid-template-columns:repeat(4,1fr)}.lastPanel .sectionTitle{margin-bottom:6px}.lastPanel .stat{padding:7px}.lastPanel .stat .value{font-size:18px}.lastPanel .stat .unit{display:none}.compactNotices{grid-template-columns:1fr}.notice.safety{display:none}.actions{grid-template-columns:repeat(2,1fr)}button{padding:10px 8px}.timer{font-size:30px}.speedRing{width:min(30dvh,206px);height:min(30dvh,206px)}}
+    @media(max-height:690px){.app{padding:7px}.hero{border-radius:22px;padding:10px}.logo{width:38px;height:38px;font-size:22px}.caption{display:none}h1{font-size:17px}.speedRing{width:min(28dvh,188px);height:min(28dvh,188px)}.speed{font-size:40px}.mini{padding:6px;border-radius:14px}.mini b{font-size:15px}.panel{padding:9px;border-radius:20px}.sectionTitle{margin-bottom:5px}.sectionTitle h2{font-size:14px}.timer{font-size:26px;margin-bottom:5px}.stat{padding:6px;border-radius:14px}.stat .label{font-size:9px}.stat .value{font-size:17px}.stat .unit{font-size:9px}.notice{font-size:10px;padding:6px 8px}.compactNotices{margin-top:6px;gap:6px}.actions{margin-top:6px;gap:6px}button{font-size:11px;padding:9px 6px}.side{gap:7px}.grid{gap:7px}.lastPanel .stat .unit{display:none}}
   </style>
 </head>
 <body>
@@ -61,22 +62,24 @@
         </div>
       </div>
 
-      <div>
+      <div class="side">
         <div class="panel">
           <div class="sectionTitle"><h2>الرحلة الحالية</h2><span class="small" id="gpsStatus">GPS جاهز</span></div>
           <div class="timer" id="timer">00:00:00</div>
           <div class="cards">
             <div class="stat"><div class="label">المسافة</div><div class="value" id="distance">0.00</div><div class="unit">كم</div></div>
             <div class="stat good"><div class="label">أعلى سرعة</div><div class="value" id="maxSpeed">0</div><div class="unit">كم/س</div></div>
-            <div class="stat"><div class="label">متوسط الرحلة</div><div class="value" id="avgSpeed">0</div><div class="unit">كم/س مع التوقف</div></div>
-            <div class="stat"><div class="label">متوسط الحركة</div><div class="value" id="movingAvg">0</div><div class="unit">كم/س أثناء الحركة</div></div>
+            <div class="stat"><div class="label">متوسط الرحلة</div><div class="value" id="avgSpeed">0</div><div class="unit">مع التوقف</div></div>
+            <div class="stat"><div class="label">متوسط الحركة</div><div class="value" id="movingAvg">0</div><div class="unit">أثناء الحركة</div></div>
           </div>
-          <div class="notice safe" id="screenLockStatus">إبقاء الشاشة: جاهز عند بدء الرحلة</div>
-          <div class="notice safe" style="margin-top:10px">للسلامة: ثبّت الهاتف على حامل أو استخدمه من قبل الراكب. لا تنظر للتطبيق أثناء القيادة.</div>
-          <div class="actions"><button id="startBtn">ابدأ الرحلة</button><button id="pauseBtn" class="gold" disabled>إيقاف مؤقت</button><button id="finishBtn" class="dark" disabled>إنهاء وحفظ</button><button id="resetBtn" class="light">تصفير</button></div>
+          <div class="compactNotices">
+            <div class="notice safe" id="screenLockStatus">إبقاء الشاشة: جاهز عند بدء الرحلة</div>
+            <div class="notice safe safety">ثبّت الهاتف على حامل ولا تنظر للتطبيق أثناء القيادة.</div>
+          </div>
+          <div class="actions"><button id="startBtn">ابدأ</button><button id="pauseBtn" class="gold" disabled>إيقاف</button><button id="finishBtn" class="dark" disabled>حفظ</button><button id="resetBtn" class="light">تصفير</button></div>
         </div>
 
-        <div class="panel">
+        <div class="panel lastPanel">
           <div class="sectionTitle"><h2>آخر رحلة</h2><span class="small" id="lastTripDate">لا يوجد بعد</span></div>
           <div class="cards">
             <div class="stat"><div class="label">المسافة</div><div class="value" id="lastDistance">0.00</div><div class="unit">كم</div></div>
@@ -90,20 +93,22 @@
   </section>
 
   <section id="history" class="page">
-    <div class="panel">
-      <div class="sectionTitle"><h2>ملخص عام</h2><button id="clearHistory" class="light" style="padding:9px 12px">مسح السجل</button></div>
-      <div class="cards">
-        <div class="stat"><div class="label">عدد الرحلات</div><div class="value" id="totalTrips">0</div><div class="unit">رحلة</div></div>
-        <div class="stat"><div class="label">إجمالي المسافة</div><div class="value" id="totalKm">0.00</div><div class="unit">كم</div></div>
-        <div class="stat good"><div class="label">أعلى سرعة محفوظة</div><div class="value" id="bestMax">0</div><div class="unit">كم/س</div></div>
-        <div class="stat"><div class="label">أطول رحلة</div><div class="value" id="longestTrip">0.00</div><div class="unit">كم</div></div>
+    <div class="pageGrid">
+      <div class="panel">
+        <div class="sectionTitle"><h2>ملخص عام</h2><button id="clearHistory" class="light" style="padding:8px 10px">مسح السجل</button></div>
+        <div class="cards">
+          <div class="stat"><div class="label">عدد الرحلات</div><div class="value" id="totalTrips">0</div><div class="unit">رحلة</div></div>
+          <div class="stat"><div class="label">إجمالي المسافة</div><div class="value" id="totalKm">0.00</div><div class="unit">كم</div></div>
+          <div class="stat good"><div class="label">أعلى سرعة</div><div class="value" id="bestMax">0</div><div class="unit">كم/س</div></div>
+          <div class="stat"><div class="label">أطول رحلة</div><div class="value" id="longestTrip">0.00</div><div class="unit">كم</div></div>
+        </div>
       </div>
-      <div id="historyList"></div>
+      <div class="panel historyList" id="historyList"></div>
     </div>
   </section>
 
   <section id="manual" class="page">
-    <div class="panel">
+    <div class="panel" style="height:100%">
       <div class="sectionTitle"><h2>إضافة رحلة يدوية</h2><span class="small">لو نسيت تشغيل GPS</span></div>
       <div class="row"><div class="field"><label>المدة بالدقائق</label><input id="manualMinutes" type="number" min="1" placeholder="45"></div><div class="field"><label>المسافة كم</label><input id="manualKm" type="number" step="0.01" min="0" placeholder="28.5"></div></div>
       <div class="row"><div class="field"><label>أعلى سرعة كم/س</label><input id="manualMax" type="number" step="1" min="0" placeholder="90"></div><div class="field"><label>متوسط السرعة كم/س</label><input id="manualAvg" type="number" step="1" min="0" placeholder="55"></div></div>
@@ -113,13 +118,13 @@
   </section>
 
   <section id="settings" class="page">
-    <div class="panel">
+    <div class="panel" style="height:100%">
       <div class="sectionTitle"><h2>الإعدادات</h2><span class="small">تبقى محفوظة على الجهاز</span></div>
       <div class="row"><div class="field"><label>حد السرعة للتنبيه البصري</label><input id="speedLimit" type="number" min="20" max="220" step="5"></div><div class="field"><label>سرعة اعتبار السيارة متحركة</label><input id="idleSpeed" type="number" min="1" max="15" step="1"></div></div>
       <div class="field"><label>أقصى دقة GPS مقبولة بالمتر</label><input id="accuracyMax" type="number" min="20" max="200" step="5"></div>
       <button id="saveSettings">حفظ الإعدادات</button>
       <div class="sep"></div>
-      <div class="notice">على iPhone: للحصول على أفضل تجربة، افتح الرابط من Safari ثم اختر مشاركة ← إضافة إلى الشاشة الرئيسية. ميزة إبقاء الشاشة تعمل أثناء الرحلة إذا كان المتصفح يدعم Wake Lock.</div>
+      <div class="notice">على iPhone: افتح الرابط من Safari ثم مشاركة ← إضافة إلى الشاشة الرئيسية. إبقاء الشاشة يعمل إذا كان المتصفح يدعم Wake Lock.</div>
       <div class="actions"><button id="exportData" class="light">تصدير نسخة</button><button id="importBtn" class="light">استيراد نسخة</button></div>
       <input id="importFile" type="file" accept="application/json" style="display:none">
     </div>
@@ -135,14 +140,18 @@
 
 <script>
 const $=id=>document.getElementById(id);
-const KEY='carTripPwa.v1';
+const KEY='carTripPwa.v2';
+const OLD_KEY='carTripPwa.v1';
+const GPS_WARMUP_MS=3000;
+const GPS_MAX_KMH=260;
 const nf=(n,d=0)=>new Intl.NumberFormat('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}).format(Number.isFinite(+n)?+n:0);
 const pad=n=>String(n).padStart(2,'0');
 const esc=s=>(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 let state=loadState();
 let running=false,paused=false,startTime=0,elapsedBeforePause=0,timerInt=null,watchId=null,wakeLock=null;
 let distanceM=0,lastPoint=null,lastFixTime=0,currentSpeedKmh=0,maxSpeedKmh=0,movingMs=0,speedSum=0,speedCount=0,lastAccuracy=null;
-function loadState(){try{return JSON.parse(localStorage.getItem(KEY))||defaults()}catch(e){return defaults()}}
+let gpsWarmupUntil=0,gpsStableFixes=0;
+function loadState(){try{const saved=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);return saved?JSON.parse(saved):defaults()}catch(e){return defaults()}}
 function defaults(){return{trips:[],settings:{speedLimit:120,idleSpeed:3,accuracyMax:80}}}
 function save(){localStorage.setItem(KEY,JSON.stringify(state))}
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2600)}
@@ -153,14 +162,15 @@ function formatMs(ms){const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.fl
 function dist(a,b){const R=6371000,toRad=x=>x*Math.PI/180,dLat=toRad(b.latitude-a.latitude),dLon=toRad(b.longitude-a.longitude),lat1=toRad(a.latitude),lat2=toRad(b.latitude);const x=Math.sin(dLat/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)**2;return 2*R*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
 function avgSpeed(){const hours=elapsed()/3600000;return hours>0?(distanceM/1000)/hours:0}
 function movingAvgSpeed(){return speedCount>0?speedSum/speedCount:0}
-function update(){const elapsedMs=elapsed(),km=distanceM/1000,avg=avgSpeed(),movingAvg=movingAvgSpeed();$('timer').textContent=formatMs(elapsedMs);$('currentSpeed').textContent=nf(currentSpeedKmh,0);$('heroMax').textContent=nf(maxSpeedKmh,0);$('heroDistance').textContent=nf(km,2);$('heroAvg').textContent=nf(avg,0);$('distance').textContent=nf(km,2);$('maxSpeed').textContent=nf(maxSpeedKmh,0);$('avgSpeed').textContent=nf(avg,0);$('movingAvg').textContent=nf(movingAvg,0);const limit=+state.settings.speedLimit||120;const pct=Math.min(100,Math.max(0,currentSpeedKmh/Math.max(1,limit)*100));$('speedRing').style.setProperty('--p',pct+'%');if(!running){$('driveState').textContent='متوقف';$('speedNote').textContent='السرعة الحالية'}else if(paused){$('driveState').textContent='مؤقت';$('speedNote').textContent='متوقف مؤقتاً'}else if(currentSpeedKmh>(limit||120)){$('driveState').textContent='تنبيه سرعة';$('speedNote').textContent='فوق الحد المحدد'}else{$('driveState').textContent='يعمل';$('speedNote').textContent=lastAccuracy?`دقة GPS ${Math.round(lastAccuracy)}م`:'جاري التتبع'} }
+function armGpsWarmup(ms=GPS_WARMUP_MS){gpsWarmupUntil=Date.now()+ms;gpsStableFixes=0;lastPoint=null;lastFixTime=0;currentSpeedKmh=0}
+function update(){const elapsedMs=elapsed(),km=distanceM/1000,avg=avgSpeed(),movingAvg=movingAvgSpeed();$('timer').textContent=formatMs(elapsedMs);$('currentSpeed').textContent=nf(currentSpeedKmh,0);$('heroMax').textContent=nf(maxSpeedKmh,0);$('heroDistance').textContent=nf(km,2);$('heroAvg').textContent=nf(avg,0);$('distance').textContent=nf(km,2);$('maxSpeed').textContent=nf(maxSpeedKmh,0);$('avgSpeed').textContent=nf(avg,0);$('movingAvg').textContent=nf(movingAvg,0);const limit=+state.settings.speedLimit||120;const pct=Math.min(100,Math.max(0,currentSpeedKmh/Math.max(1,limit)*100));$('speedRing').style.setProperty('--p',pct+'%');if(!running){$('driveState').textContent='متوقف';$('speedNote').textContent='السرعة الحالية'}else if(paused){$('driveState').textContent='مؤقت';$('speedNote').textContent='متوقف مؤقتاً'}else if(Date.now()<gpsWarmupUntil){$('driveState').textContent='تهيئة GPS';$('speedNote').textContent='انتظار ثبات الإشارة'}else if(currentSpeedKmh>(limit||120)){$('driveState').textContent='تنبيه سرعة';$('speedNote').textContent='فوق الحد المحدد'}else{$('driveState').textContent='يعمل';$('speedNote').textContent=lastAccuracy?`دقة GPS ${Math.round(lastAccuracy)}م`:'جاري التتبع'}}
 function gpsQuality(acc){const max=+state.settings.accuracyMax||80;if(!acc)return{ok:true,text:'الدقة غير محددة'};if(acc<=Math.min(25,max))return{ok:true,text:`GPS ممتاز • الدقة ${Math.round(acc)}م`};if(acc<=max)return{ok:true,text:`GPS مقبول • الدقة ${Math.round(acc)}م`};return{ok:false,text:`GPS ضعيف • الدقة ${Math.round(acc)}م — انتظر إشارة أفضل`}}
-async function start(){if(running&&paused){paused=false;startTime=Date.now();$('pauseBtn').textContent='إيقاف مؤقت';tick();gps();enableWakeLock(true);return}running=true;paused=false;startTime=Date.now();elapsedBeforePause=0;distanceM=0;lastPoint=null;lastFixTime=0;currentSpeedKmh=0;maxSpeedKmh=0;movingMs=0;speedSum=0;speedCount=0;lastAccuracy=null;$('startBtn').disabled=true;$('pauseBtn').disabled=false;$('finishBtn').disabled=false;$('gpsStatus').textContent='جاري تشغيل GPS';tick();gps();enableWakeLock(true)}
-function pause(){if(!running)return;if(!paused){elapsedBeforePause+=Date.now()-startTime;paused=true;currentSpeedKmh=0;$('pauseBtn').textContent='متابعة';stopGps();disableWakeLock('إبقاء الشاشة: متوقف مؤقتاً لتوفير البطارية','warn');$('gpsStatus').textContent='متوقف مؤقتاً';update()}else{paused=false;startTime=Date.now();$('pauseBtn').textContent='إيقاف مؤقت';tick();gps();enableWakeLock(true)}}
+async function start(){if(running&&paused){paused=false;startTime=Date.now();$('pauseBtn').textContent='إيقاف';armGpsWarmup(2500);tick();gps();enableWakeLock(true);return}running=true;paused=false;startTime=Date.now();elapsedBeforePause=0;distanceM=0;lastPoint=null;lastFixTime=0;currentSpeedKmh=0;maxSpeedKmh=0;movingMs=0;speedSum=0;speedCount=0;lastAccuracy=null;armGpsWarmup(GPS_WARMUP_MS);$('startBtn').disabled=true;$('pauseBtn').disabled=false;$('finishBtn').disabled=false;$('gpsStatus').textContent='تهيئة GPS لمدة 3 ثوانٍ';tick();gps();enableWakeLock(true)}
+function pause(){if(!running)return;if(!paused){elapsedBeforePause+=Date.now()-startTime;paused=true;currentSpeedKmh=0;$('pauseBtn').textContent='متابعة';stopGps();disableWakeLock('إبقاء الشاشة: متوقف مؤقتاً لتوفير البطارية','warn');$('gpsStatus').textContent='متوقف مؤقتاً';update()}else{paused=false;startTime=Date.now();$('pauseBtn').textContent='إيقاف';armGpsWarmup(2500);tick();gps();enableWakeLock(true)}}
 function finish(){if(!running)return;const minutes=Math.max(1,Math.round(elapsed()/60000)),km=+(distanceM/1000).toFixed(2),avg=+avgSpeed().toFixed(1),movAvg=+movingAvgSpeed().toFixed(1),max=+maxSpeedKmh.toFixed(0);if(km<0.05&&!confirm('المسافة قليلة جداً. هل تريد حفظ الرحلة؟'))return;const trip={id:Date.now(),date:key(),time:timeNow(),minutes,seconds:Math.round(elapsed()/1000),km,type:'gps',maxSpeed:max,avgSpeed:avg,movingAvg:movAvg,movingMinutes:Math.round(movingMs/60000),accuracy:lastAccuracy?Math.round(lastAccuracy):null,notes:'رحلة سيارة GPS'};state.trips.unshift(trip);save();toast('تم حفظ الرحلة ✅');reset(false);renderAll();show('history')}
-function reset(ask=true){if(ask&&running&&!confirm('هل تريد تصفير الرحلة الحالية؟ لن يتم حفظ البيانات.'))return;running=false;paused=false;elapsedBeforePause=0;distanceM=0;lastPoint=null;lastFixTime=0;currentSpeedKmh=0;maxSpeedKmh=0;movingMs=0;speedSum=0;speedCount=0;lastAccuracy=null;clearInterval(timerInt);timerInt=null;stopGps();disableWakeLock('إبقاء الشاشة: جاهز عند بدء الرحلة','off');$('startBtn').disabled=false;$('pauseBtn').disabled=true;$('finishBtn').disabled=true;$('pauseBtn').textContent='إيقاف مؤقت';$('gpsStatus').textContent='GPS جاهز';update()}
+function reset(ask=true){if(ask&&running&&!confirm('هل تريد تصفير الرحلة الحالية؟ لن يتم حفظ البيانات.'))return;running=false;paused=false;elapsedBeforePause=0;distanceM=0;lastPoint=null;lastFixTime=0;currentSpeedKmh=0;maxSpeedKmh=0;movingMs=0;speedSum=0;speedCount=0;lastAccuracy=null;gpsWarmupUntil=0;gpsStableFixes=0;clearInterval(timerInt);timerInt=null;stopGps();disableWakeLock('إبقاء الشاشة: جاهز عند بدء الرحلة','off');$('startBtn').disabled=false;$('pauseBtn').disabled=true;$('finishBtn').disabled=true;$('pauseBtn').textContent='إيقاف';$('gpsStatus').textContent='GPS جاهز';update()}
 function tick(){clearInterval(timerInt);timerInt=setInterval(update,1000);update()}
-function gps(){if(!navigator.geolocation){$('gpsStatus').textContent='الموقع غير مدعوم في هذا المتصفح';return}stopGps();watchId=navigator.geolocation.watchPosition(p=>{const c=p.coords,pt={latitude:c.latitude,longitude:c.longitude},t=p.timestamp||Date.now(),q=gpsQuality(c.accuracy);lastAccuracy=c.accuracy||lastAccuracy;if(lastPoint&&!paused&&running){const d=dist(lastPoint,pt),dt=Math.max(1,(t-lastFixTime)/1000),calcSpeed=(d/dt)*3.6,deviceSpeed=(c.speed!==null&&c.speed!==undefined&&c.speed>=0)?c.speed*3.6:calcSpeed;const idle=+state.settings.idleSpeed||3;const plausible=deviceSpeed>=0&&deviceSpeed<=260&&d<=Math.max(220,dt*82);if(q.ok&&plausible){currentSpeedKmh=deviceSpeed<idle?0:deviceSpeed;if((deviceSpeed>=idle||calcSpeed>=idle)&&d>=1){distanceM+=d;movingMs+=dt*1000;maxSpeedKmh=Math.max(maxSpeedKmh,currentSpeedKmh);speedSum+=currentSpeedKmh;speedCount++}}else if(!q.ok){currentSpeedKmh=0}}lastPoint=pt;lastFixTime=t;$('gpsStatus').textContent=q.text;update()},e=>{$('gpsStatus').textContent='تعذر تشغيل الموقع — تأكد من السماح للموقع من المتصفح';toast('اسمح للموقع حتى يعمل عداد الرحلة')},{enableHighAccuracy:true,maximumAge:0,timeout:12000})}
+function gps(){if(!navigator.geolocation){$('gpsStatus').textContent='الموقع غير مدعوم في هذا المتصفح';return}stopGps();watchId=navigator.geolocation.watchPosition(p=>{const c=p.coords,pt={latitude:c.latitude,longitude:c.longitude},t=p.timestamp||Date.now(),now=Date.now(),q=gpsQuality(c.accuracy);lastAccuracy=c.accuracy||lastAccuracy;if(!running||paused){return}if(!q.ok){currentSpeedKmh=0;gpsStableFixes=0;lastPoint=pt;lastFixTime=t;$('gpsStatus').textContent=q.text;update();return}if(now<gpsWarmupUntil){currentSpeedKmh=0;lastPoint=pt;lastFixTime=t;gpsStableFixes++;const left=Math.max(1,Math.ceil((gpsWarmupUntil-now)/1000));$('gpsStatus').textContent=`تهيئة GPS ${left}ث — لا يتم احتساب السرعة الآن`;update();return}if(!lastPoint||!lastFixTime||gpsStableFixes<2){currentSpeedKmh=0;lastPoint=pt;lastFixTime=t;gpsStableFixes++;$('gpsStatus').textContent='GPS مستقر — يبدأ الحساب من القراءة التالية';update();return}const d=dist(lastPoint,pt),dt=Math.max(.5,(t-lastFixTime)/1000),calcSpeed=(d/dt)*3.6,hasDeviceSpeed=c.speed!==null&&c.speed!==undefined&&c.speed>=0,deviceSpeed=hasDeviceSpeed?c.speed*3.6:calcSpeed;const idle=+state.settings.idleSpeed||3;const plausible=Number.isFinite(deviceSpeed)&&Number.isFinite(calcSpeed)&&deviceSpeed>=0&&deviceSpeed<=GPS_MAX_KMH&&calcSpeed<=GPS_MAX_KMH&&d<=Math.max(80,dt*75);if(q.ok&&plausible){const measured=deviceSpeed<idle?0:deviceSpeed;currentSpeedKmh=measured;if((deviceSpeed>=idle||calcSpeed>=idle)&&d>=1){distanceM+=d;movingMs+=dt*1000;maxSpeedKmh=Math.max(maxSpeedKmh,currentSpeedKmh);speedSum+=currentSpeedKmh;speedCount++}$('gpsStatus').textContent=q.text}else{currentSpeedKmh=0;$('gpsStatus').textContent='تم تجاهل قراءة GPS غير مستقرة'}lastPoint=pt;lastFixTime=t;gpsStableFixes++;update()},e=>{$('gpsStatus').textContent='تعذر تشغيل الموقع — تأكد من السماح للموقع من المتصفح';toast('اسمح للموقع حتى يعمل عداد الرحلة')},{enableHighAccuracy:true,maximumAge:0,timeout:12000})}
 function stopGps(){if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null}}
 function setWakeStatus(message,type='off'){const el=$('screenLockStatus');el.textContent=message;el.className='notice '+(type==='ok'?'ok':type==='warn'?'warn':type==='bad'?'bad':'safe')}
 async function enableWakeLock(showToast=false){try{if(!('wakeLock' in navigator)){setWakeStatus('إبقاء الشاشة: غير مدعوم على هذا المتصفح','bad');return false}if(wakeLock){setWakeStatus('إبقاء الشاشة: مفعّل أثناء الرحلة ✅','ok');return true}wakeLock=await navigator.wakeLock.request('screen');setWakeStatus('إبقاء الشاشة: مفعّل أثناء الرحلة ✅','ok');wakeLock.addEventListener('release',()=>{wakeLock=null;if(running&&!paused)setWakeStatus('إبقاء الشاشة: توقف مؤقتاً — سيتفعل عند الرجوع للتطبيق','warn');else setWakeStatus('إبقاء الشاشة: جاهز عند بدء الرحلة','off')});if(showToast)toast('تم تفعيل إبقاء الشاشة أثناء الرحلة ✅');return true}catch(e){setWakeStatus('إبقاء الشاشة: لم يسمح النظام بتفعيله حالياً','bad');return false}}

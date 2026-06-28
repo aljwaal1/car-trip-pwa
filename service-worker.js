@@ -1,4 +1,4 @@
-const CACHE_NAME = 'car-trip-pwa-v1';
+const CACHE_NAME = 'car-trip-pwa-v2-gps-layout';
 const ASSETS = [
   './',
   './index.html',
